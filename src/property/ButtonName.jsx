@@ -23,7 +23,9 @@ export class ButtonName extends Component {
         updateControlProperty(attrName,value)
     }
     render(){
-        return <Input value={getValue(this.state.attrName)} size="small"
+        return <p className="form-ele">
+            <Input value={getValue(this.state.attrName)} size="small"
             onChange={this.updateValue}></Input>
+        </p>
     }
 }

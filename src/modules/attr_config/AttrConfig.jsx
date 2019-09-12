@@ -49,7 +49,10 @@ class AttrConfig extends React.Component {
                                 {item.children.map(attr=>{
                                     return <Menu.Item key={attr.label}>
                                         <div>
-                                            <p className="label">{attr.label}</p>
+                                            <p className="label">
+                                                <Tag color="volcano">
+                                                {attr.label}</Tag>
+                                            </p>
                                             {attr.render()}
                                         </div>
                                     </Menu.Item>

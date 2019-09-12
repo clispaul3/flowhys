@@ -20,6 +20,8 @@ export class CustomerStyle extends Component {
         editorCode(value,"css")
     }
     render(){
-        return <Input size="small" onFocus={this.editorStyle}></Input>
+        return <p className="form-ele">
+        <Input size="small" onFocus={this.editorStyle}></Input>
+        </p> 
     }
 }

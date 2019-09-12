@@ -18,12 +18,17 @@
         height:100%;
     }
     li.ant-menu-item{
-        height: 60px !important;
         padding:0px 10px 0 10px !important;
+        >div{
+            display:flex;
+        }
+        p.form-ele{
+            flex:1;
+        }
         >div>p.label{
+            width:90px;
+            height:40px;
             text-align: center;
-            height:20px;
-            line-height: 20px;
             padding:0px !important;
             margin:0px !important;
         }
