@@ -1,0 +1,254 @@
+{
+    "root": {
+        "data": {
+            "id": "bwwun7x3cag0",
+            "created": 1568172183871,
+            "text": "事件管理"
+        },
+        "children": [
+            {
+                "data": {
+                    "id": "bwwunks3hls0",
+                    "created": 1568172211867,
+                    "text": "ADD_CONTROL",
+                    "note": "# 添加控件"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "bwwuqx3hbz40",
+                            "created": 1568172473770,
+                            "text": "发布者"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bwwurrwe0vs0",
+                                    "created": 1568172540821,
+                                    "text": "@modules/ControlStore.jsx",
+                                    "priority": 1,
+                                    "note": "# 发布者\n\n  - @modules/ControlStore.jsx\n\n## 发布数据\n```js\n{\n    controlId,\n    controlKey\n}\n```\n\n## 关联操作\n\n  - 向Store中添加一个控件\n  - 修改Store中currentControlId\n"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "bwwuqzockdc0",
+                            "created": 1568172479385,
+                            "text": "订阅者"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bwwusgkqj1k0",
+                                    "created": 1568172594536,
+                                    "text": "@modules/AttrConfig.jsx",
+                                    "priority": 1,
+                                    "note": "# 订阅者\n\n  - @modules/AttrConfig.jsx\n  \n## 关联操作\n\n  - 显示当前控件的属性配置"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bwwuzx0d9cw0",
+                                    "created": 1568173178859,
+                                    "text": "@modules/page_design/components/Designer.jsx",
+                                    "priority": 2,
+                                    "note": "# 订阅者\n@modules/page_design/components/Designer.jsx\n\n## 关联操作\n\n  - 渲染设计器中的所有控件"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bwwxh6q54ww0",
+                                    "created": 1568180174419,
+                                    "text": "@property/*",
+                                    "priority": 3,
+                                    "note": "# 属性组件\n\n  - 属性组件中的所有数据都是从redux中读取出来的\n  - 属性组件可以直接修改当前控件的属性值"
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bwxnalfwfvk0",
+                                    "created": 1568253006760,
+                                    "text": "@components/*",
+                                    "priority": 4,
+                                    "note": "## 关联操作\n\n  - 修改当前控件的state.isRender，渲染当前控件"
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "bwwunpjnz540",
+                    "created": 1568172222242,
+                    "text": "TOGGLE_CONTROL",
+                    "note": "# 切换控件"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "bwwy2hyailk0",
+                            "created": 1568181844504,
+                            "text": "发布者",
+                            "expandState": "expand"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bwwur3y2l1k0",
+                                    "created": 1568172488680,
+                                    "text": "@modules/page_design/components/Designer.jsx",
+                                    "priority": 1,
+                                    "note": "# 发布者\n@modules/page_design/components/Designer.jsx\n\n## 发布数据\n```js\n{\n\tcontrolId,\n    controlKey\n}\n```\n\n## 关联操作\n\n  - 切换Store中的currentControlId"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "bwwur66rrds0",
+                            "created": 1568172493560,
+                            "text": "订阅者",
+                            "priority": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bwwy2r1lhyg0",
+                                    "created": 1568181864295,
+                                    "text": "@property/*",
+                                    "priority": 1
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bwwy3bytagw0",
+                                    "created": 1568181909839,
+                                    "text": "@modules/attr_config/AttrConfig.jsx",
+                                    "priority": 2
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "bwwunzno0go0",
+                    "created": 1568172244251,
+                    "text": "DELETE_CONTROL",
+                    "note": "# 删除控件"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "bwwur8clgyo0",
+                            "created": 1568172498265,
+                            "text": "发布者",
+                            "priority": null
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bwwykohkns00",
+                                    "created": 1568183269285,
+                                    "text": "@components/*",
+                                    "priority": 1,
+                                    "note": "# 发布者\n@components/*\n\n## 关联操作\n\n  - 修改Store中的pageControls\n  - 修改Store中的currentControlId"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "bwwura9mt400",
+                            "created": 1568172502440,
+                            "text": "订阅者"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bwwylziixpc0",
+                                    "created": 1568183371652,
+                                    "text": "@modules/attr_config/AttrConfig.jsx",
+                                    "priority": 1
+                                },
+                                "children": []
+                            },
+                            {
+                                "data": {
+                                    "id": "bwwym9k4lv40",
+                                    "created": 1568183393516,
+                                    "text": "@modules/page_design/components/Designer.jsx",
+                                    "priority": 2
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "data": {
+                    "id": "bwwuo4nzr680",
+                    "created": 1568172255155,
+                    "text": "UPDATE_CONTROL",
+                    "note": "# 更新控件\n>修改控件的属性"
+                },
+                "children": [
+                    {
+                        "data": {
+                            "id": "bwwurekzbyo0",
+                            "created": 1568172511833,
+                            "text": "发布者"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bwwyol1t8w80",
+                                    "created": 1568183575259,
+                                    "text": "@property/*",
+                                    "priority": 1,
+                                    "note": "# 发布者\n@property\n\n## 发布数据\n```js\n{\n\tcontrolId,\n    controlKey,\n    attrName\n}\n```"
+                                },
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "data": {
+                            "id": "bwwurgg6apc0",
+                            "created": 1568172515896,
+                            "text": "订阅者"
+                        },
+                        "children": [
+                            {
+                                "data": {
+                                    "id": "bwwz8vjajmw0",
+                                    "created": 1568185165367,
+                                    "text": "@components/*",
+                                    "priority": 1
+                                },
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "template": "right",
+    "theme": "fresh-blue",
+    "version": "1.4.43"
+}

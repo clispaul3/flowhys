@@ -1,0 +1,31 @@
+.attr-config {
+    flex:1;
+    box-sizing: border-box;
+    border-left:1px solid #ccc;
+    overflow: hidden;
+    >.ant-tag{
+        width:100%;
+        text-align: center;
+        padding:5px;
+        font-size:14px;
+        border-radius: 0px;
+        font-size:16px;
+        font-weight: 600;
+    }
+    >ul{
+        overflow-y:auto;
+        overflow-x:hidden;
+        height:100%;
+    }
+    li.ant-menu-item{
+        height: 60px !important;
+        padding:0px 10px 0 10px !important;
+        >div>p.label{
+            text-align: center;
+            height:20px;
+            line-height: 20px;
+            padding:0px !important;
+            margin:0px !important;
+        }
+    }
+}

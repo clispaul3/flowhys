@@ -1,0 +1,11 @@
+@mixin text_ellipse {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap
+}
+@mixin word_break {
+    hyphens:auto;
+    line-break: anywhere;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
