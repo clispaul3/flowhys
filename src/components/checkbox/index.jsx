@@ -5,16 +5,36 @@ import {
 } from "@utils/eventTool/eventName"
 import Pubsub from "@utils/eventTool/Pubsub"
 import { deleteControl,getValueFromProperty } from "../common"
-const { Input,Icon,Tag } = Antd
+const { Icon,Tag,Checkbox } = Antd
+const CheckboxGroup = Checkbox.Group;
 const { Component } = React
-
-class TextController extends Component {
+const plainOptions = ["选项1", "选项2", "选项3"];
+const defaultCheckedList = ["选项1", "选项2"];
+class CheckboxController extends Component {
     constructor(props){
         super(props)
         this.state = {
             controlId:this.props.config.controlId,
-            isRender:false
+            isRender:false,
+            checkedList: defaultCheckedList,
+            indeterminate: true,
+            checkAll: false
         }
+    }
+    onChange = checkedList => {
+        this.setState({
+          checkedList,
+          indeterminate: !!checkedList.length && checkedList.length < plainOptions.length,
+          checkAll: checkedList.length === plainOptions.length,
+        })
+    }
+    
+    onCheckAllChange = e => {
+        this.setState({
+          checkedList: e.target.checked ? plainOptions : [],
+          indeterminate: false,
+          checkAll: e.target.checked,
+        })
     }
     @autobind
     deleteControl(ev){
@@ -45,8 +65,8 @@ class TextController extends Component {
         const result = getValueFromProperty(controlId,controlKey,keys)
         const { DEFAULT_VALUE = "",LABEL_NAME = "",LABEL_WIDTH = "53px",
             CONTROL_HEIGHT,CONTROL_WIDTH } = result
-        return <div className="text-control controller"
-                style={{width:CONTROL_WIDTH,height:CONTROL_HEIGHT}}
+        return <div className="checkbox-control controller"
+                style={{width:CONTROL_WIDTH,height:CONTROL_HEIGHT,lineHeight:"40px"}}
                 data-id={controlId}
                 onClick={this.deleteControl}
                 data-key={controlKey}>
@@ -55,13 +75,19 @@ class TextController extends Component {
                 : null
             }
             <Icon type="close-circle" />
-            <Input data-id={controlId}
-                style={{width:"auto"}}
-                value={DEFAULT_VALUE}
-                data-key={controlKey}>
-            </Input>
+            <Checkbox
+                indeterminate={this.state.indeterminate}
+                onChange={this.onCheckAllChange}
+                checked={this.state.checkAll}>
+                    全选
+            </Checkbox>
+            <CheckboxGroup
+                options={plainOptions}
+                value={this.state.checkedList}
+                onChange={this.onChange}
+            />
         </div>
     }
 }
 
-export default TextController
+export default CheckboxController

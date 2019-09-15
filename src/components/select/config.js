@@ -1,15 +1,14 @@
 /**
- * 文本框控件的默认配置属性
+ * 按钮控件的默认配置属性
  */
 import  { 
     LabelWidth,
     ControlWidth,
     LabelName,
-    DefaultValue,
     CustomerStyle,
     ControlHeight
 } from "@property/index"
-const textConfig = [
+const selectConfig = [
     {
         label:"样式属性",
         attrName:"STYLE_CONFIG",
@@ -17,14 +16,14 @@ const textConfig = [
             {
                 label:"标签宽度",
                 attrName:"LABEL_WIDTH",
-                value:"53px",
+                value:"50px",
                 render(){
                     return <LabelWidth/>
                 },
             },{
                 label:"控件宽度",
                 attrName:"CONTROL_WIDTH",
-                value:"235px",
+                value:"145px",
                 render(){
                     return <ControlWidth/>
                 }
@@ -50,20 +49,13 @@ const textConfig = [
             {
                 label:"标签名",
                 attrName:"LABEL_NAME",
-                value:"文本框",
+                value:"下拉框",
                 render(){
                     return <LabelName/>
-                }
-            },{
-                label:"默认值",
-                attrName:"DEFAULT_VALUE",
-                value:"",
-                render(){
-                    return <DefaultValue></DefaultValue>
                 }
             }
         ]
     }
 ]
 
-export default textConfig
+export default selectConfig

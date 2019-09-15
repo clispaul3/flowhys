@@ -1,48 +1,61 @@
 /**
  * 控件标签宽度配置
- * props {
- *   defaultValue  默认值
- * }
  */
 import { autobind } from "core-decorators"
-import Store from "@store/index"
-import { getCurrentControl } from "@store/getters"
-const { Input } = Antd
+import { 
+    getValue,
+    updateControlProperty,
+    formatSize 
+} from "./utils"
+
+const { InputNumber } = Antd
 export class LabelWidth extends React.Component {
     constructor(props){
         super(props)
         this.state = {
+            attrName:"LABEL_WIDTH",
             value:0,
-            showTips:false
+            unit:"px"
         }
     }
     @autobind
-    validator(ev){
-        let value = ev.target.value
-        const res = /(^\d+%$)|(^[0-9]\d*$)/.test(value)
-        if(res || value==""){
-            console.log(value)
-            const { id } = getCurrentControl()
-            Store.dispatch({type:"UPDATE_LABEL_WIDTH",value,controlId:id})
-            this.setState({value,showTips:false})
-        }else{
-            this.setState({value,showTips:true})
+    validator(value){
+        const res = /^[0-9]\d*$/.test(value)
+        if(!res || this.state.value==value) return
+        this.setState({value})
+        const { attrName,unit } = this.state
+        updateControlProperty(attrName,value + ""+unit)
+    }
+    @autobind
+    toggleUnit(e){
+        const ev = e.nativeEvent
+        window.event? window.event.cancelBubble = true : ev.stopPropagation();
+        const { unit,attrName,value } = this.state
+        if(unit=="px"){
+            this.setState({unit:"%"})
+            updateControlProperty(attrName,value + "%")
+        }
+        if(unit=="%"){
+            this.setState({unit:"px"})
+            updateControlProperty(attrName,value + "px")
         }
     }
     componentDidMount(){
-        const { value } = this.props
-        this.setState({value})
+        const value = getValue(this.state.attrName)
+        const { val = "",unit } = formatSize(value)
+        this.setState({value:val,unit})
     }
     render(){
+        const value = getValue(this.state.attrName)
+        const { val = "",unit } = formatSize(value)
         return <p className="form-ele">
-            <Input value={this.state.value} 
-              size="small"
-              onChange={this.validator}/>
-            {
-                this.state.showTips ? 
-                <span className="tips">只能输入自然数或百分比</span>
-                : null
-            }
+            <InputNumber value={val} 
+                min={0}
+                className="width-input"
+                onChange={this.validator} size="small"/>
+            <span className="width-unit" onClick={this.toggleUnit}>
+                {unit}
+            </span>
         </p>
     }
 }

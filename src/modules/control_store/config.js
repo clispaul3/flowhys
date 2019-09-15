@@ -115,5 +115,40 @@ const allControls = [
         children:[]
     },
 ]
-
-export default allControls
+const hasFinished = [{
+    label:"基础控件",
+    icon:"bug",
+    children:[
+        {
+            label:"文本框",
+            icon:"file-text",
+            id:"CONTROL_TEXT"
+        },{
+            label:"按钮",
+            icon:"bug",
+            id:"CONTROL_BUTTON"
+        },{
+            label:"下拉框",
+            icon:"bug",
+            id:"CONTROL_SELECT"
+        },{
+            label:"单选框",
+            icon:"bug",
+            id:"CONTROL_RADIO"
+        },{
+            label:"复选框",
+            icon:"bug",
+            id:"CONTROL_CHECKBOX"
+        }
+    ]
+},{
+    label:"布局控件",
+    icon:"bug",
+    children:[
+        {
+            label:"定制板块",
+            icon:"layout",
+            id:"LAYOUT_CUSTOM"
+        }]
+}]
+export default hasFinished

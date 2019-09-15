@@ -33,7 +33,8 @@ class Designer extends React.Component {
     toggleControl(ev){
         const target = ev.nativeEvent.target
         const { id,key } = target.dataset
-        if(id && key){
+        const toggle = id && key
+        if(toggle){
             Store.dispatch({type:actionTypes.SET_CURRENT_CONTROL_ID,controlId:id})
             Pubsub.publish(TOGGLE_CONTROL,{
                 controlKey:key,

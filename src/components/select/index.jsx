@@ -5,9 +5,9 @@ import {
 } from "@utils/eventTool/eventName"
 import { autobind } from "core-decorators"
 import { deleteControl,getValueFromProperty } from "../common"
-const { Button,Icon,Tag } = Antd
+const { Select,Icon,Tag } = Antd
 
-class ButtonController extends React.Component {
+class SelectController extends React.Component {
     constructor(props){
         super(props)
         this.state = {
@@ -46,7 +46,7 @@ class ButtonController extends React.Component {
         const keys = ["BUTTON_NAME","LABEL_NAME",
             "LABEL_WIDTH","CONTROL_WIDTH","CONTROL_HEIGHT"]
         const result = getValueFromProperty(controlId,controlKey,keys)
-        const { BUTTON_NAME = "按钮",LABEL_NAME = "",
+        const { LABEL_NAME = "",
             LABEL_WIDTH,CONTROL_WIDTH,CONTROL_HEIGHT } = result
         return <div className="button-control controller"
                 style={{width:CONTROL_WIDTH,height:CONTROL_HEIGHT}}
@@ -58,12 +58,13 @@ class ButtonController extends React.Component {
                 : null
             }
             <Icon type="close-circle" />
-            <Button data-id={controlId}
+            <Select defaultValue="0" 
+                data-id={controlId}
                 data-key={controlKey}>
-                {BUTTON_NAME}
-            </Button>
+                <Option value="0">请选择</Option>
+            </Select>
         </div>
     }
 } 
 
-export default ButtonController
+export default SelectController

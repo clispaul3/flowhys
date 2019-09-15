@@ -37,6 +37,7 @@ class AttrConfig extends React.Component {
             {config && config.property ?
                 <Menu mode="inline"
                     theme="light"
+                    defaultOpenKeys={["STYLE_CONFIG","BASIS_CONFIG"]}
                     forceSubMenuRender={true}>
                     {config.property.map(item => {
                         return item.children.length==0 ?

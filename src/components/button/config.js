@@ -6,7 +6,8 @@ import  {
     ControlWidth,
     LabelName,
     ButtonName,
-    CustomerStyle
+    CustomerStyle,
+    ControlHeight
 } from "@property/index"
 const buttonConfig = [
     {
@@ -16,17 +17,24 @@ const buttonConfig = [
             {
                 label:"标签宽度",
                 attrName:"LABEL_WIDTH",
+                value:"50px",
                 render(){
                     return <LabelWidth/>
                 },
-                value:110
             },{
                 label:"控件宽度",
                 attrName:"CONTROL_WIDTH",
+                value:"132px",
                 render(){
                     return <ControlWidth/>
-                },
-                value:200
+                }
+            },{
+                label:"控件高度",
+                attrName:"CONTROL_HEIGHT",
+                value:"40px",
+                render(){
+                    return <ControlHeight></ControlHeight>
+                }
             },{
                 label:"自定义样式",
                 attrName:"CUSTOMER_STYLE",

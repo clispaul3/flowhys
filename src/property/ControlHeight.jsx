@@ -9,11 +9,11 @@ import {
 } from "./utils"
 
 const { InputNumber } = Antd
-export class ControlWidth extends React.Component {
+export class ControlHeight extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            attrName:"CONTROL_WIDTH",
+            attrName:"CONTROL_HEIGHT",
             value:0,
             unit:"px"
         }

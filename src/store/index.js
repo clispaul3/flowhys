@@ -9,5 +9,5 @@ const reducers = combineReducers({
     currentControlId
 })
 const Store = createStore(reducers)
-
+window.Store = Store
 export default Store

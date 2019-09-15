@@ -22,10 +22,11 @@ class ControlStore extends React.Component {
         controls.forEach(control=>{
             control.draggable = true
             control.onselectstart = () => false
-             dragula([control, targetArea],{copy:true})
+            dragula([control, targetArea],{copy:true})
                 .on('drop', function () {
                     $("#page-designer>span.label").remove()
                     $("#page-designer>i.anticon").remove()
+                    $("#page-designer>p.modal-control").remove()
                     const newControl = createNewControl("DEFAULT",control.id)
                     const { controlId,controlKey } = newControl
                     Store.dispatch({type:actionTypes.ADD_CONTROL,newControl})
@@ -34,7 +35,7 @@ class ControlStore extends React.Component {
                         controlId,
                         controlKey
                     })
-            })
+                })
         })
     }
     render(){

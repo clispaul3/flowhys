@@ -9,7 +9,7 @@ import  {
     CustomerStyle,
     ControlHeight
 } from "@property/index"
-const textConfig = [
+const checkConfig = [
     {
         label:"样式属性",
         attrName:"STYLE_CONFIG",
@@ -24,7 +24,7 @@ const textConfig = [
             },{
                 label:"控件宽度",
                 attrName:"CONTROL_WIDTH",
-                value:"235px",
+                value:"350px",
                 render(){
                     return <ControlWidth/>
                 }
@@ -50,7 +50,7 @@ const textConfig = [
             {
                 label:"标签名",
                 attrName:"LABEL_NAME",
-                value:"文本框",
+                value:"多选框",
                 render(){
                     return <LabelName/>
                 }
@@ -66,4 +66,4 @@ const textConfig = [
     }
 ]
 
-export default textConfig
+export default checkConfig

@@ -1,16 +1,18 @@
-import Pubsub from "@utils/eventTool/Pubsub"
+import { autobind } from "core-decorators"
 import {
     ADD_CONTROL,UPDATEA_CONTROL,
     DELETE_CONTROL
 } from "@utils/eventTool/eventName"
-import { autobind } from "core-decorators"
+import Pubsub from "@utils/eventTool/Pubsub"
 import { deleteControl,getValueFromProperty } from "../common"
-const { Button,Icon,Tag } = Antd
+const { Icon,Tag,Radio } = Antd
+const { Component } = React
 
-class ButtonController extends React.Component {
+class RadioController extends Component {
     constructor(props){
         super(props)
         this.state = {
+            value:1,
             controlId:this.props.config.controlId,
             isRender:false
         }
@@ -19,6 +21,11 @@ class ButtonController extends React.Component {
     deleteControl(ev){
         const { controlId,controlKey } = this.props.config
         deleteControl(ev,controlId,controlKey)
+    }
+    onChange = e => {
+        this.setState({
+          value: e.target.value,
+        })
     }
     componentDidMount(){
         this.setState({controlId:this.props.config.controlId})
@@ -37,33 +44,33 @@ class ButtonController extends React.Component {
             this.setState({isRender:true})
         })
     }
-    shouldComponentUpdate(props,nextState){
-        if(!nextState.isRender) return false
-        return true
-    }
     render(){
         const { controlId,controlKey } = this.props.config
-        const keys = ["BUTTON_NAME","LABEL_NAME",
-            "LABEL_WIDTH","CONTROL_WIDTH","CONTROL_HEIGHT"]
+        const keys = ["DEFAULT_VALUE","LABEL_NAME","LABEL_WIDTH",
+            "CONTROL_HEIGHT","CONTROL_WIDTH"]
         const result = getValueFromProperty(controlId,controlKey,keys)
-        const { BUTTON_NAME = "按钮",LABEL_NAME = "",
-            LABEL_WIDTH,CONTROL_WIDTH,CONTROL_HEIGHT } = result
-        return <div className="button-control controller"
-                style={{width:CONTROL_WIDTH,height:CONTROL_HEIGHT}}
-                onClick={this.deleteControl}
+        const { DEFAULT_VALUE = "",LABEL_NAME = "",LABEL_WIDTH = "53px",
+            CONTROL_HEIGHT,CONTROL_WIDTH } = result
+        return <div className="radio-control controller"
+                style={{width:CONTROL_WIDTH,height:CONTROL_HEIGHT,lineHeight:"40px"}}
                 data-id={controlId}
+                onClick={this.deleteControl}
                 data-key={controlKey}>
             {LABEL_NAME ?
                 <Tag color="purple" style={{width:LABEL_WIDTH}}>{LABEL_NAME}</Tag> 
                 : null
             }
             <Icon type="close-circle" />
-            <Button data-id={controlId}
+            <Radio.Group value={this.state.value}
+                onChange={this.onChange}
+                data-id={controlId}
                 data-key={controlKey}>
-                {BUTTON_NAME}
-            </Button>
+                <Radio value={1}>选项1</Radio>
+                <Radio value={2}>选项2</Radio>
+                <Radio value={3}>选项3</Radio>
+            </Radio.Group>
         </div>
     }
-} 
+}
 
-export default ButtonController
+export default RadioController

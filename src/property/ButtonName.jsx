@@ -8,8 +8,7 @@ export class ButtonName extends Component {
         super(props)
         this.state = {
             attrName:"BUTTON_NAME",
-            value:"",
-            isRender:false
+            value:""
         }
     }
     componentDidMount(){

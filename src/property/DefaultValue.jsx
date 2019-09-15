@@ -3,11 +3,11 @@ import { getValue,updateControlProperty } from "./utils"
 const { Input } = Antd
 const { Component } = React
 
-export class LabelName extends Component {
+export class DefaultValue extends Component {
     constructor(props){
         super(props)
         this.state = {
-            attrName:"LABEL_NAME",
+            attrName:"DEFAULT_VALUE",
             value:""
         }
     }
